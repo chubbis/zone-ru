@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/cert.pem
+/key.pem
+/cert.pem
+/cert.pem
+.idea
