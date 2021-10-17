@@ -1,0 +1,15 @@
+{% extends "/app_base.j2" %}
+
+{% block title %}
+    flats_list
+{% endblock %}
+
+{% block content %}
+    <div>
+    {% for flat in flats %}
+        <div>
+            <a href="{{request.url_for('flat', flat_id=flat.id)}}">Flat num. {{flat.flat_number}}</a>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
