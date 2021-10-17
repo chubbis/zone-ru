@@ -1,17 +1,24 @@
-from fastapi import Depends
-from sqlalchemy.orm import Session
-from database.mysql import get_db
-from app.flats import crud, models
+from fastapi import Body, Request, Depends
+from pydantic import Field
+
+from app.flats.models import FlatItem
+from app.flats.schemas import FlatItemUpdate
 
 
-async def get_flat():
-    pass
+async def get_flat(flat_id):
+    return await FlatItem.get_flat(flat_id)
 
 
-def get_flat(flat_id: int, db: Session = Depends(get_db)):
-    return db.query(models.FlatItem).filter(models.FlatItem.id == flat_id).first()
+def get_flats():
+    return FlatItem.get_flats()
 
 
-def get_flats(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    flats = crud.get_flats(db, skip=skip, limit=limit)
-    return flats
+async def update_flat(
+    flat_id: int,
+    new_data: FlatItemUpdate = Body(...),
+):
+    return await FlatItem.update_flat(flat_id, new_data)
+
+
+async def get_result(flat_id: int):
+    return await FlatItem.get_result(flat_id)
