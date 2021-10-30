@@ -65,9 +65,9 @@ export default {
         cold_water: this.flat.cold_water,
         hot_water: this.flat.hot_water,
       }
-      const url = `https://localhost:9091/api/v1/flats/edit/${this.$route.params.id}`;
+      const url_path = `/api/v1/flats/edit/${this.$route.params.id}`;
 
-      const result = await postService(url, data);
+      const result = await postService(url_path, data);
       console.log(result.status_code);
       if (result.status_code === 200) {
         await this.$router.push(`/flats/result/${this.$route.params.id}`);
@@ -75,8 +75,8 @@ export default {
     },
   },
   async mounted() {
-    const url = `https://localhost:9091/api/v1/flats/${this.$route.params.id}`;
-    this.flat = await getService(url);
+    const url_path = `/api/v1/flats/${this.$route.params.id}`;
+    this.flat = await getService(url_path);
   }
 }
 </script>

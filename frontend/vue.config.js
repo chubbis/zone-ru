@@ -1,6 +1,7 @@
 const fs = require('fs')
 
 module.exports = {
+    publicPath: './',
     devServer: {
         open: process.platform === 'darwin',
         host: 'localhost',

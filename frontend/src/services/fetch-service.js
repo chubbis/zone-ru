@@ -16,7 +16,8 @@ const getService = async (url) => {
         .catch(err => console.log(err));
 }
 
-const postService = async (url, data) => {
+const postService = async (url_path, data) => {
+    const url = `${window.location.origin}${url_path}`;
     return await fetch(url, {
         method: 'put',
         mode: 'cors', // no-cors, *cors, same-origin
