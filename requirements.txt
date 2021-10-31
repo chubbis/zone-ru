@@ -2,7 +2,7 @@ aiofiles==0.7.0
 aiomysql==0.0.21
 asgiref==3.4.1
 asttokens==2.0.5
-black==21.9b0
+black~=21.7b0
 click==8.0.1
 colorama==0.4.4
 executing==0.8.1
@@ -22,8 +22,16 @@ python-dotenv==0.19.0
 python-multipart==0.0.5
 regex==2021.8.28
 six==1.16.0
-SQLAlchemy==1.4.23
+SQLAlchemy~=1.4.25
 starlette==0.14.2
 tomli==1.2.1
 typing-extensions==3.10.0.2
 uvicorn==0.15.0
+
+config~=0.5.0.post0
+alembic~=1.7.4
+pip~=21.1.1
+toml~=0.10.2
+itsdangerous~=2.0.1
+setuptools~=56.0.0
+greenlet~=1.1.1
