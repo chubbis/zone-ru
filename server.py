@@ -15,8 +15,11 @@ debug = Debug()
 origins = [
     "https://127.0.0.1:8080",
     "https://localhost:8080",
+    "http://127.0.0.1",
+    'http://localhost',
+    'http://ksenia.local'
 ]
-print(debug.debug)
+
 app = FastAPI(
     docs_url="/docs/" if debug.debug else None,
     openapi_url="/docs/openapi.json" if debug.debug else None,

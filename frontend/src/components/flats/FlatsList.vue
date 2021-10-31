@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import {getService} from "@/services/fetch-service";
+
 export default {
   name: "Flats",
   data() {
@@ -15,19 +17,9 @@ export default {
       canGoToPage: false,
     }
   },
-  mounted() {
-    fetch('https://localhost:9091/api/v1/flats', {
-        mode: 'cors', // no-cors, *cors, same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
-    })
-      .then(data => data.json())
-      .then(result => this.flats = result)
-      .catch(err => console.log(err));
+  async mounted() {
+    const url_path = `/api/v1/flats`;
+    this.flats = await getService(url_path);
   }
 }
 </script>

@@ -16,7 +16,7 @@ export default {
     }
   },
   async mounted() {
-    const url = `https://localhost:9091/api/v1/flats/result/${this.$route.params.id}`;
+    const url = `/api/v1/flats/result/${this.$route.params.id}`;
     this.result = await getService(url);
   }
 }

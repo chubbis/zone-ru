@@ -1,13 +1,17 @@
-const getService = async (url) => {
+const getService = async (url_path) => {
+    console.log(process.env.VUE_APP_BACKEND_PORT);
+    console.log(window.location.origin)
+    const url = `${window.location.protocol}//${window.location.hostname}${process.env.VUE_APP_BACKEND_PORT}${url_path}`;
+    console.log(url)
     return await fetch(url, {
-        // mode: 'cors', // no-cors, *cors, same-origin
-        // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        // credentials: 'same-origin', // include, *same-origin, omit
-        // headers: {
-        //     'Content-Type': 'application/json',
-        //     'Access-Control-Allow-Origin': 'http://localhost:9091',
-        //     // 'Content-Type': 'application/x-www-form-urlencoded',
-        // },
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:9091',
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
     })
         .then(data => data.json())
         .then(data => {
@@ -16,7 +20,8 @@ const getService = async (url) => {
         .catch(err => console.log(err));
 }
 
-const postService = async (url, data) => {
+const postService = async (url_path, data) => {
+    const url = `${window.location.origin}${process.env.VUE_APP_BACKEND_PORT}${url_path}`;
     return await fetch(url, {
         method: 'put',
         mode: 'cors', // no-cors, *cors, same-origin
