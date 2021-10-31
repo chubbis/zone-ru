@@ -6,6 +6,7 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app/
 
 RUN pip3 install --no-cache-dir -r requirements.txt
+RUN alembic upgrade head
 
 EXPOSE 9091
 
