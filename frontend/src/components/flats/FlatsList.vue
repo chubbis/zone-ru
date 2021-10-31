@@ -18,7 +18,7 @@ export default {
     }
   },
   async mounted() {
-    const url_path = `/api/v1/flats/${this.$route.params.id}`;
+    const url_path = `/api/v1/flats`;
     this.flats = await getService(url_path);
   }
 }
