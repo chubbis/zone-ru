@@ -1,8 +1,10 @@
 const getService = async (url_path) => {
-    console.log(process.env.VUE_APP_BACKEND_PORT);
-    console.log(window.location.origin)
-    const url = `${window.location.protocol}//${window.location.hostname}${process.env.VUE_APP_BACKEND_PORT}${url_path}`;
-    console.log(url)
+    let url = '';
+    if (process.env.VUE_APP_BACKEND_PORT) {
+        url = `${window.location.protocol}//${window.location.hostname}${process.env.VUE_APP_BACKEND_PORT}${url_path}`;
+    } else {
+        url = `${window.location.protocol}//${window.location.hostname}${url_path}`;
+    }
     return await fetch(url, {
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -21,7 +23,12 @@ const getService = async (url_path) => {
 }
 
 const postService = async (url_path, data) => {
-    const url = `${window.location.origin}${process.env.VUE_APP_BACKEND_PORT}${url_path}`;
+    let url = '';
+    if (process.env.VUE_APP_BACKEND_PORT) {
+        url = `${window.location.protocol}//${window.location.hostname}${process.env.VUE_APP_BACKEND_PORT}${url_path}`;
+    } else {
+        url = `${window.location.protocol}//${window.location.hostname}${url_path}`;
+    }
     return await fetch(url, {
         method: 'put',
         mode: 'cors', // no-cors, *cors, same-origin
